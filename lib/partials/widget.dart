@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temperature_app/additionals/color_picker.dart';
+import 'package:temperature_app/components/component.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
@@ -13,21 +14,8 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          padding: const EdgeInsets.all(0),
-          height: 225.0,
-          width: double.infinity,
-          color: Colors.transparent,
-        ),
-        Container(
-          padding: const EdgeInsets.all(0),
-          height: 200.0,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-              borderRadius:
-                  BorderRadius.only(bottomLeft: Radius.circular(80.0)),
-              color: primary),
-        ),
+        Component().stackBg,
+        Component().stackShapeRectangle,
         Positioned(
           top: 20,
           left: -60,
@@ -87,26 +75,7 @@ class _MyWidgetState extends State<MyWidget> {
             ],
           ),
         ),
-        Positioned(
-          top: 80,
-          right: 25,
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                backgroundColor:
-                    MaterialStateColor.resolveWith((states) => white)),
-            child: const Text(
-              'Second Page',
-              style:
-                  TextStyle(color: primary, fontFamily: 'Montserrat-SemiBold'),
-            ),
-          ),
-        ),
+        ButtonPage().elevatedButton,
         Positioned(
           top: 170,
           child: Container(
@@ -164,7 +133,9 @@ class _MyWidgetState extends State<MyWidget> {
                           Center(
                             child: Text(
                               'Convert',
-                              style: TextStyle(fontSize: 8.0),
+                              style: TextStyle(
+                                  fontSize: 8.0,
+                                  fontFamily: 'Montserrat-SemiBold'),
                             ),
                           )
                         ],
@@ -178,6 +149,109 @@ class _MyWidgetState extends State<MyWidget> {
         )
       ],
     );
-    ;
+  }
+}
+
+class MyResultWidget extends StatefulWidget {
+  const MyResultWidget({super.key});
+
+  @override
+  State<MyResultWidget> createState() => _MyResultWidgetState();
+}
+
+class _MyResultWidgetState extends State<MyResultWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 25, right: 25),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    height: 150,
+                    width: 180,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10), color: primary),
+                  ),
+
+                  Positioned(
+                    bottom: 10,
+                    right: -30,
+                    child: Container(
+                      padding: const EdgeInsets.all(0),
+                      height: 120,
+                      width: 120,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: primaryLight,
+                      ),
+                    ),
+                  ),
+
+                  Positioned(
+                    top: 40,
+                    left: 40,
+                    child: Container(
+                      padding: const EdgeInsets.all(0),
+                      height: 80,
+                      width: 80,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: primaryShape
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    padding: const EdgeInsets.all(15.0),
+                    child: const Text('Kelvin', style: TextStyle(
+                      fontFamily: 'Montserrat-SemiBold',
+                      fontSize: 18.0,
+                      color: white
+                    ),),
+                  ),
+
+                  Positioned(
+                    bottom: 15,
+                    left: 15,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('372', style: TextStyle(
+                          fontFamily: 'Montserrat-Bold',
+                          fontSize: 40,
+                          color: white
+                        ),),
+                        Text('100 Celcius = 372 Kelvin', style: TextStyle(
+                          color: white,
+                          fontSize: 10
+                        ),),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+
+              Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    height: 150,
+                    width: 180,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10), color: primary),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

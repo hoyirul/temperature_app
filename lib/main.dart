@@ -50,8 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            MyWidget()
+          children: [
+            const MyWidget(),
+
+            Container(
+              padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 15),
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Conversion Result', style: TextStyle(
+                  fontFamily: 'Montserrat-SemiBold',
+                  fontSize: 18.0
+                ),),
+              ),
+            ),
+
+            const MyResultWidget(),
           ],
         ),
       )
