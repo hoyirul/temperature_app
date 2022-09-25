@@ -5,7 +5,7 @@
 - NIM : 2041720074
 - Kelas : TI-3H
 - Design Figma
-- <img src="./assets/reports/splash.png" width="100"> <img src="./assets/reports/first_screen.png" width="100"> <img src="./assets/reports/second_screen.png" width="100">
+- <img src="./assets/reports/splash.png" width="200"> <img src="./assets/reports/first_screen.png" width="200"> <img src="./assets/reports/second_screen.png" width="200">
 - Result Code
 - <img src="./assets/reports/result.png">
 
