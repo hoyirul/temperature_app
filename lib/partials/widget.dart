@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:temperature_app/additionals/color_picker.dart';
 import 'package:temperature_app/components/component.dart';
+import 'package:temperature_app/models/temperature_model.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
@@ -15,17 +17,24 @@ class _MyWidgetState extends State<MyWidget> {
 
   late double kelvin = 0, reamur = 0, fahrentheit = 0, celcius = 0;
 
-  getData() {
+  getData() async {
     //  Rumus C + 273
     setState(() {
       // ignore: unrelated_type_equality_checks
       if (input.text != '') {
         celcius = (input.text == '') ? 0 : double.parse(input.text);
-        kelvin = celcius + 273;
-        reamur = (4 / 5) * celcius;
-        fahrentheit = (9 / 5 * celcius) + 32;
+        TemperatureModel(celcius);
       } else {
-        print('Harus diisi');
+        final snackBar = SnackBar(
+            content: const Text('Input must be filled!', style: TextStyle(fontFamily: 'Montserrat-Regular', fontSize: 14, color: primary),),
+            backgroundColor: white,
+            action: SnackBarAction(
+              label: 'dismiss',
+              onPressed: () {
+              },
+            ),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     });
   }
@@ -196,8 +205,8 @@ class _MyWidgetState extends State<MyWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MyResultWidget(params: kelvin, title: 'Kelvin', celcius: celcius,),
-                  MyResultWidget(params: reamur, title: 'Reamur', celcius: celcius,),
+                  MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getKelvin(), title: 'Kelvin', celcius: celcius,),
+                  MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getReamur(), title: 'Reamur', celcius: celcius,),
                 ],
               ),
 
@@ -206,8 +215,8 @@ class _MyWidgetState extends State<MyWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MyResultWidget(params: fahrentheit, title: 'Fahrentheit', celcius: celcius,),
-                  MyResultWidget(params: celcius, title: 'Celcius', celcius: celcius,),
+                  MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getFahrentheit(), title: 'Fahrentheit', celcius: celcius,),
+                  MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getCelcius(), title: 'Celcius', celcius: celcius,),
                 ],
               ),
             ],
@@ -287,7 +296,7 @@ class _MyResultWidgetState extends State<MyResultWidget> {
               ),
               Text(
                 '${widget.celcius} Celcius = ${widget.params} ${widget.title}',
-                style: const TextStyle(color: white, fontSize: 10),
+                style: const TextStyle(color: white, fontSize: 9),
               ),
             ],
           ),
