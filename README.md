@@ -1,5 +1,15 @@
 # temperature_app
 
+## Biodata
+- Nama : Mochammad Hairullah
+- NIM : 2041720074
+- Kelas : TI-3H
+- Design Figma
+- <img src="./assets/reports/splash.png" width="100"> <img src="./assets/reports/first_screen.png" width="100"> <img src="./assets/reports/second_screen.png" width="100">
+- Result Code
+- <img src="./assets/reports/result.png">
+
+
 A new Flutter project.
 
 ## Getting Started
