@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temperature_app/additionals/color_picker.dart';
-import 'package:temperature_app/partials/widget.dart';
+import 'package:temperature_app/pages/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //   title: Text(widget.title),
       // ),
       body: SingleChildScrollView(
-        child: MyWidget(),
+        child: SplashScreen(),
       )
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
