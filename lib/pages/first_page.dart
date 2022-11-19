@@ -212,8 +212,9 @@ class _FirstPageState extends State<FirstPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getKelvin(), title: 'Kelvin', celcius: celcius,),
-                      MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getReamur(), title: 'Reamur', celcius: celcius,),
+                      Expanded(child: MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getKelvin(), title: 'Kelvin', celcius: celcius,)),
+                      const SizedBox(width: 5,),
+                      Expanded(child: MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getReamur(), title: 'Reamur', celcius: celcius,)),
                     ],
                   ),
           
@@ -222,8 +223,9 @@ class _FirstPageState extends State<FirstPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getFahrentheit(), title: 'Fahrentheit', celcius: celcius,),
-                      MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getCelcius(), title: 'Celcius', celcius: celcius,),
+                      Expanded(child: MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getFahrentheit(), title: 'Fahrentheit', celcius: celcius,)),
+                      const SizedBox(width: 5,),
+                      Expanded(child: MyResultWidget(params: (input.text == '') ? 0.0 : TemperatureModel(celcius).getCelcius(), title: 'Celcius', celcius: celcius,)),
                     ],
                   ),
                 ],
@@ -305,7 +307,7 @@ class _MyResultWidgetState extends State<MyResultWidget> {
         Container(
           padding: const EdgeInsets.all(0),
           height: 150,
-          width: 180,
+          width: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10), color: primary),
         ),
